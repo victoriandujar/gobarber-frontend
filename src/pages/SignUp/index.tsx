@@ -4,7 +4,7 @@ import { FormHandles } from "@unform/core";
 
 import { FiArrowLeft, FiMail, FiLock, FiUser } from "react-icons/fi";
 import { Form } from "@unform/web";
-import getValidationErros from "../../utils/getValidationErrors";
+import getValidationErrors from "../../utils/getValidationErrors";
 import Logo from "../../assets/Logo.svg";
 
 import Button from "../../components/Button";
@@ -14,7 +14,6 @@ import { Container, Content, Background } from "./styles";
 
 const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
-  console.log(formRef);
 
   const handleSubmit = useCallback(async (data: object) => {
     try {
@@ -32,7 +31,7 @@ const SignUp: React.FC = () => {
         abortEarly: false,
       });
     } catch (err) {
-      const errors = getValidationErros(err);
+      const errors = getValidationErrors(err);
       formRef.current?.setErrors(errors);
     }
   }, []);
